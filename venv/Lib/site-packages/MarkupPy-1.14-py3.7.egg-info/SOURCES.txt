@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+MarkupPy/__init__.py
+MarkupPy/markup.py
+MarkupPy.egg-info/PKG-INFO
+MarkupPy.egg-info/SOURCES.txt
+MarkupPy.egg-info/dependency_links.txt
+MarkupPy.egg-info/not-zip-safe
+MarkupPy.egg-info/top_level.txt

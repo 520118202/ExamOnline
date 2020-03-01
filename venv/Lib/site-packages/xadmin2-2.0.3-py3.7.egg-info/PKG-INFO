@@ -1,0 +1,172 @@
+Metadata-Version: 2.1
+Name: xadmin2
+Version: 2.0.3
+Summary: Drop-in replacement of Django admin comes with lots of goodies, fully extensible with plugin support, pretty UI based on Twitter Bootstrap.
+Home-page: http://www.xadmin.io
+Author: wgbbiao
+Author-email: wgb237@163.com
+License: Copyright (c) Django Xadmin and individual contributors.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, 
+       this list of conditions and the following disclaimer.
+    
+    2. Redistributions in binary form must reproduce the above copyright 
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of Django Xadmin nor the names of its contributors may be used
+       to endorse or promote products derived from this software without
+       specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Download-URL: https://github.com/beeguess/xadmin/archive/master.zip
+Description: # Xadmin [![Build Status](https://travis-ci.org/sshwsfc/xadmin.png?branch=master)](https://travis-ci.org/sshwsfc/xadmin)
+        
+        Drop-in replacement of Django admin comes with lots of goodies, fully
+        extensible with plugin support, pretty UI based on Twitter Bootstrap.
+        
+        ## Live Demo
+        
+        <http://demo.xadmin.io>
+        
+        - User: admin
+        - Password: admin
+        
+        ## Features
+        
+        - Drop-in replacement of Django admin
+        - Twitter Bootstrap based UI with theme support
+        - Extensible with plugin support
+        - Better filter, date range, number range, etc.
+        - Built-in data export with xls, csv, xml and json format
+        - Dashboard page with widget support
+        - In-site bookmarking
+        - Full CRUD methods
+        
+        ## Screenshots
+        
+        ![](https://raw.github.com/sshwsfc/django-xadmin/docs-chinese/docs/images/plugins/action.png)
+        
+        ![](https://raw.github.com/sshwsfc/django-xadmin/docs-chinese/docs/images/plugins/filter.png)
+        
+        ![](https://raw.github.com/sshwsfc/django-xadmin/docs-chinese/docs/images/plugins/chart.png)
+        
+        ![](https://raw.github.com/sshwsfc/django-xadmin/docs-chinese/docs/images/plugins/export.png)
+        
+        ![](https://raw.github.com/sshwsfc/django-xadmin/docs-chinese/docs/images/plugins/editable.png)
+        
+        ## Get Started
+        
+        ### Install
+        
+        Xadmin is best installed via PyPI. To install the latest version, run:
+        
+        ```{.sourceCode .bash}
+        pip install xadmin2
+        ```
+        
+        or Install from github source:
+        
+        ```{.sourceCode .bash}
+        pip install git+git://github.com/wgbbiao/xadmin.git
+        ```
+        
+        ## Install Requires
+        
+        - [django](http://djangoproject.com) \>=2
+        - [django-crispy-forms](http://django-crispy-forms.rtfd.org) \>=1.8.1
+          (For xadmin crispy forms)
+        - [django-reversion](https://github.com/etianen/django-reversion)>=3.0.4
+          ([OPTION] For object history and reversion feature, please select
+          right version by your django, see
+          [changelog](https://github.com/etianen/django-reversion/blob/master/CHANGELOG.rst)
+          )
+        - [django-formtools](https://github.com/django/django-formtools)>=2.1
+          ([OPTION] For wizward form)
+        - [xlwt](http://www.python-excel.org/)>=1.3.0 ([OPTION] For export xls files)
+        - [xlsxwriter](https://github.com/jmcnamara/XlsxWriter) >=1.2.6([OPTION] For
+          export xlsx files)
+        
+        ## Documentation
+        
+        - English (coming soon)
+        - [Chinese](https://xadmin.readthedocs.org/en/latest/index.html)
+        
+        ## Changelogs
+        
+        ### 2.0.1
+        
+        - Compact with Django2.0.
+        
+        ### 0.6.0
+        
+        - Compact with Django1.9.
+        - Add Clock Picker widget for timepicker.
+        - Fixed some userface errors.
+        
+        ### 0.5.0
+        
+        - Update fontawesome to 4.0.3
+        - Update javascript files to compact fa icons new version
+        - Update tests for the new instance method of the AdminSite class
+        - Added demo graphs
+        - Added quickfilter plugin.
+        - Adding apps_icons with same logic of apps_label_title.
+        - Add xlsxwriter for big data export.
+        - Upgrade reversion models admin list page.
+        - Fixed reverse many 2 many lookup giving FieldDoesNotExist error.
+        - Fixed user permission check in inline model.
+        
+        Detail\_
+        
+        - [detail](./changelog.md)
+        
+        ## Online Group
+        
+        - QQ 群 : 282936295
+        
+        ## Run Demo Locally
+        
+        ```{.sourceCode .bash}
+        cd demo_app
+        ./manage.py migrate
+        ./manage.py runserver
+        ```
+        
+        Open <http://127.0.0.1:8000> in your browser, the admin user password is
+        `admin`
+        
+        ## Help
+        
+        Help Translate : <http://trans.xadmin.io>
+        
+Keywords: admin,django,xadmin,bootstrap
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+Provides-Extra: Reversion
+Provides-Extra: Excel
