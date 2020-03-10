@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -26,6 +25,9 @@ SECRET_KEY = '%!t78vti6g=ejpbev3$45qjh)2)##eer9c=q#*71*+k0ynul!j'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# 解决拓展内置auth_user表出现的认证问题
+# AUTH_USER_MODEL = 'user.Student'
 
 
 # Application definition
@@ -39,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'xadmin',
     'crispy_forms',
+    'rest_framework',
+    'django_filters',
+    'user',
     'exam',
-    'paper',
-    'grade',
     'question'
 ]
 
@@ -76,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ExamOnline.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -86,7 +88,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -106,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -120,8 +120,29 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# restframework配置
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # Json Web Token
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+    # restframework新版3.10.1需要指定默认schema
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
+
+# JWT设置
+JWT_AUTH = {
+    # token的有效期限
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    # JWT跟前端保持一致，比如“token”这里设置成JWT
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+    # 自定义方法返回用户信息
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'user.views.jwt_response_payload_handler'
+}
