@@ -48,7 +48,7 @@ class GradeAdmin(object):
     list_filter = ['exam', 'student', 'create_time', 'update_time']
     search_fields = ['exam', 'student']
     list_display_links = ['score']
-    list_per_page = 2
+    list_per_page = 10
     list_editable = ['id', 'score']
     model_icon = 'fa fa-bar-chart'
 

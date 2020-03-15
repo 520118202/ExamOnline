@@ -9,7 +9,7 @@ class ChoiceAdmin(object):
     list_filter = ['level']
     search_fields = ['id', 'question']
     list_display_links = ['question']
-    list_per_page = 10
+    list_per_page = 5
     list_editable = ['question']
     model_icon = 'fa fa-question-circle-o'
 
