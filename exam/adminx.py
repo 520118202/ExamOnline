@@ -28,7 +28,7 @@ class ExamAdmin(object):
     search_fields = ['id', 'name']
     list_display_links = ['name']
     list_per_page = 10
-    list_editable = ['name']
+    # list_editable = ['name']
     model_icon = 'fa fa-book'
     relfield_style = 'fk-ajax'
 
@@ -39,7 +39,7 @@ class PaperAdmin(object):
     search_fields = ['id', 'name']
     list_display_links = ['name']
     list_per_page = 10
-    list_editable = ['name']
+    # list_editable = ['name']
     model_icon = 'fa fa-file-text'
 
 
@@ -49,7 +49,7 @@ class GradeAdmin(object):
     search_fields = ['exam', 'student']
     list_display_links = ['score']
     list_per_page = 10
-    list_editable = ['id', 'score']
+    # list_editable = ['id', 'score']
     model_icon = 'fa fa-bar-chart'
 
     data_charts = {

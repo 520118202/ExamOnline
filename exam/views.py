@@ -11,7 +11,7 @@ from exam.serializers import ExamSerializer, GradeSerializer
 class CommonPagination(PageNumberPagination):
     """考试列表自定义分页"""
     # 默认每页显示的个数
-    page_size = 2
+    page_size = 10
     # 可以动态改变每页显示的个数
     page_size_query_param = 'page_size'
     # 页码参数

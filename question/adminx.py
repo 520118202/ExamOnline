@@ -10,7 +10,7 @@ class ChoiceAdmin(object):
     search_fields = ['id', 'question']
     list_display_links = ['question']
     list_per_page = 5
-    list_editable = ['question']
+    # list_editable = ['question']
     model_icon = 'fa fa-question-circle-o'
 
 
@@ -20,7 +20,7 @@ class FillAdmin(object):
     search_field = ['id', 'question']
     list_display_links = ['question']
     list_per_page = 10
-    list_editable = ['question']
+    # list_editable = ['question']
     model_icon = 'fa fa-edit '
 
 
@@ -30,7 +30,7 @@ class JudgeAdmin(object):
     search_field = ['id', 'question']
     list_display_links = ['question']
     list_per_page = 10
-    list_editable = ['question']
+    # list_editable = ['question']
     model_icon = 'fa fa-check-square-o'
 
 
@@ -40,7 +40,7 @@ class ProgramAdmin(object):
     search_field = ['id', 'question']
     list_display_links = ['question']
     list_per_page = 10
-    list_editable = ['question']
+    # list_editable = ['question']
     model_icon = 'fa fa-laptop'
 
 

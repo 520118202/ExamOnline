@@ -21,6 +21,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 from exam.views import GradeListViewSet, ExamListViewSet
 from question.views import ChoiceListViewSet, FillListViewSet, JudgeListViewSet, ProgramListViewSet, CheckProgramApi
+from user.views import RegisterViewSet, StudentViewSet, UpdatePwdApi
 
 router = DefaultRouter()
 
@@ -31,6 +32,8 @@ router.register(r'choices', ChoiceListViewSet)
 router.register(r'fills', FillListViewSet)
 router.register(r'judges', JudgeListViewSet)
 router.register(r'programs', ProgramListViewSet)
+router.register(r'register', RegisterViewSet)
+router.register(r'students', StudentViewSet)
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -38,5 +41,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('jwt-auth/', obtain_jwt_token),
     re_path('^', include(router.urls)),
-    path('check-program/', CheckProgramApi.as_view())
+    path('check-program/', CheckProgramApi.as_view()),
+    path('update-pwd/', UpdatePwdApi.as_view())
 ]
