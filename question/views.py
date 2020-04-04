@@ -23,7 +23,7 @@ class ChoiceListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         # 题目数量
         choice_number = int(self.request.query_params.get("choice_number"))
         level = int(self.request.query_params.get("level", 1))
-        print(choice_number)
+
         if choice_number:
             self.queryset = Choice.objects.all().filter(level=level).order_by('?')[:choice_number]
         return self.queryset

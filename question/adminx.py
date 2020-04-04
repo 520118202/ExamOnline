@@ -35,7 +35,7 @@ class JudgeAdmin(object):
 
 
 class ProgramAdmin(object):
-    list_display = ['id', 'question', 'answer_template', 'test_case', 'analysis', 'score', 'level']
+    list_display = ['id', 'question', 'analysis', 'score', 'level']
     list_filter = ['level']
     search_field = ['id', 'question']
     list_display_links = ['question']

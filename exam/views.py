@@ -6,8 +6,10 @@ from exam.filter import ExamFilter
 from exam.models import Exam, Grade
 from exam.serializers import ExamSerializer, GradeSerializer
 
-
 # Create your views here.
+from user.models import Student
+
+
 class CommonPagination(PageNumberPagination):
     """考试列表自定义分页"""
     # 默认每页显示的个数
@@ -28,7 +30,7 @@ class ExamListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = ExamSerializer
     # 分页
     pagination_class = CommonPagination
-
+    # 开启过滤
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
     # 设置filter的类为我们自定义的类
     filter_class = ExamFilter
@@ -36,6 +38,16 @@ class ExamListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     search_fields = ('name', 'major')
     # 排序
     ordering_fields = ('id', 'exam_date')
+
+    # 重写queryset
+    def get_queryset(self):
+        # 学生id
+        student_id = self.request.query_params.get("student_id")
+        student = Student.objects.get(id=student_id)
+
+        if student:
+            self.queryset = student.exam_set
+        return self.queryset
 
 
 class GradeListViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):

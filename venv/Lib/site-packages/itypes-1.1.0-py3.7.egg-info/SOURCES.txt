@@ -1,0 +1,7 @@
+itypes.py
+setup.cfg
+setup.py
+itypes.egg-info/PKG-INFO
+itypes.egg-info/SOURCES.txt
+itypes.egg-info/dependency_links.txt
+itypes.egg-info/top_level.txt
