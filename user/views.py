@@ -45,6 +45,9 @@ class RegisterViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     serializer_class = UserDetailSerializer
 
     def create(self, request, *args, **kwargs):
+        user = User.objects.get(username=request.data['username'])
+        if user:
+            return Response({'msg': '用户名已存在'}, status=status.HTTP_201_CREATED)
         user_detail = UserDetailSerializer(data=request.data)
         if user_detail.is_valid():
             user_detail.save()
@@ -54,7 +57,7 @@ class RegisterViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         user.save()
         student = Student(user=user, name=request.data['name'])
         if student:
-            student.save();
+            student.save()
         return Response(user_detail.errors)
 
 

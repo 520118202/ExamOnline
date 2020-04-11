@@ -29,6 +29,10 @@ class Paper(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.score = (self.choice_number + self.fill_number + self.judge_number) * 2 + self.program_number * 8
+        super().save(*args, **kwargs)
+
 
 class Exam(models.Model):
     """考试模型类"""
