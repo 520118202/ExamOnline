@@ -19,8 +19,10 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework_jwt.views import obtain_jwt_token
 
-from exam.views import GradeListViewSet, ExamListViewSet
+from exam.views import GradeListViewSet, ExamListViewSet, PracticeListViewSet
 from question.views import ChoiceListViewSet, FillListViewSet, JudgeListViewSet, ProgramListViewSet, CheckProgramApi
+from record.views import ChoiceRecordListViewSet, FillRecordListViewSet, JudgeRecordListViewSet, \
+    ProgramRecordListViewSet
 from user.views import RegisterViewSet, StudentViewSet, UpdatePwdApi
 
 router = DefaultRouter()
@@ -34,13 +36,18 @@ router.register(r'judges', JudgeListViewSet)
 router.register(r'programs', ProgramListViewSet)
 router.register(r'register', RegisterViewSet)
 router.register(r'students', StudentViewSet)
+router.register(r'practices', PracticeListViewSet)
+router.register(r'records/choices', ChoiceRecordListViewSet)
+router.register(r'records/fills', FillRecordListViewSet)
+router.register(r'records/judges', JudgeRecordListViewSet)
+router.register(r'records/programs', ProgramRecordListViewSet)
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('docs/', include_docs_urls('Python在线考试系统')),
     path('api-auth/', include('rest_framework.urls')),
     path('jwt-auth/', obtain_jwt_token),
-    re_path('^', include(router.urls)),
     path('check-program/', CheckProgramApi.as_view()),
-    path('update-pwd/', UpdatePwdApi.as_view())
+    path('update-pwd/', UpdatePwdApi.as_view()),
+    re_path('^', include(router.urls))
 ]

@@ -12,7 +12,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
 
 class StudentSerializer(serializers.ModelSerializer):
     # 覆盖外键字段
-    #user = UserDetailSerializer()
+    # user = UserDetailSerializer()
 
     class Meta:
         model = Student

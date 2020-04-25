@@ -107,16 +107,11 @@ class CheckProgramApi(APIView):
             obj.stdout.close()
             cmd_error = obj.stderr.read()
             obj.stderr.close()
+            # print(cmd_out)
+            # print(cmd_error)  # 程序没有异常，只输出空行
         except Exception as e:
             return Response({'message': '程序运行出错'})
         finally:
             if 'OK' in cmd_error:
                 return Response({'message': 'pass'})
             return Response({'message': cmd_error})
-        # print(cmd_out)
-        # print(cmd_error)  # 程序没有异常，只输出空行
-
-        # if 'OK' in cmd_error:
-        #     print("answer is right")
-        #     return Response({'message': 'OK'})
-        # return Response({'message': cmd_error})

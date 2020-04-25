@@ -1,11 +1,10 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics, mixins, viewsets, filters
+from rest_framework import mixins, viewsets, filters
 from rest_framework.pagination import PageNumberPagination
 
 from exam.filter import ExamFilter
-from exam.models import Exam, Grade
-from exam.serializers import ExamSerializer, GradeSerializer
-
+from exam.models import Exam, Grade, Practice
+from exam.serializers import ExamSerializer, GradeSerializer, PracticeSerializer
 # Create your views here.
 from user.models import Student
 
@@ -41,7 +40,7 @@ class ExamListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
     # 重写queryset
     def get_queryset(self):
-        # 学生id
+        # 学生ID
         student_id = self.request.query_params.get("student_id")
         student = Student.objects.get(id=student_id)
 
@@ -58,3 +57,29 @@ class GradeListViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.
     serializer_class = GradeSerializer
     # 分页
     pagination_class = CommonPagination
+
+    # 重写queryset
+    def get_queryset(self):
+        # 学生ID
+        student_id = self.request.query_params.get("student_id")
+
+        if student_id:
+            self.queryset = Grade.objects.filter(student_id=student_id)
+        return self.queryset
+
+
+class PracticeListViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """练习列表"""
+    # 数据集
+    queryset = Practice.objects.all()
+    # 序列化
+    serializer_class = PracticeSerializer
+    # 分页
+    pagination_class = CommonPagination
+
+    def get_queryset(self):
+        # 学生ID
+        student_id = self.request.query_params.get('student_id')
+        if student_id:
+            self.queryset = Practice.objects.filter(student_id=student_id)
+        return self.queryset

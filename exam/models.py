@@ -1,7 +1,10 @@
 from django.db import models
 
 # Create your models here.
+from question.models import Choice, Fill, Judge, Program
 from user.models import Student
+from datetime import datetime
+import random
 
 
 class Paper(models.Model):
@@ -69,3 +72,22 @@ class Grade(models.Model):
 
     def __str__(self):
         return f'{self.id}的{self.student}为{self.score}分'
+
+
+class Practice(models.Model):
+    """模拟练习"""
+    name = models.CharField("练习名称", max_length=20)
+    student = models.ForeignKey(Student, verbose_name="学生", on_delete=models.CASCADE)
+    create_time = models.DateTimeField("练习时间", auto_now_add=True)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name = '练习'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.name = f'模拟练习{datetime.now().strftime("%Y%m%d")}{random.randint(1000, 9999)}'
+        super().save(*args, **kwargs)
