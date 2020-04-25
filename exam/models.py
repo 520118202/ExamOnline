@@ -1,12 +1,11 @@
 from django.db import models
-
-# Create your models here.
 from question.models import Choice, Fill, Judge, Program
-from user.models import Student
+from user.models import Student, Clazz
 from datetime import datetime
 import random
 
 
+# Create your models here.
 class Paper(models.Model):
     """试卷模型类"""
     LEVEL_CHOICES = (
@@ -45,7 +44,7 @@ class Exam(models.Model):
     paper = models.OneToOneField(Paper, on_delete=models.CASCADE, verbose_name="试卷", default="")
     major = models.CharField("专业", max_length=20, default="")
     tips = models.TextField("考生须知", default="")
-    students = models.ManyToManyField(Student, verbose_name="可以参加考试的学生")
+    clazzs = models.ManyToManyField(Clazz, verbose_name="参加考试的班级")
 
     class Meta:
         ordering = ["id"]

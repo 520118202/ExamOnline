@@ -3,26 +3,33 @@ from django.db import models
 
 
 # Create your models here.
+class Clazz(models.Model):
+    """班级"""
+    year = models.CharField("年级", max_length=20)
+    major = models.CharField("专业", max_length=20)
+    clazz = models.CharField("班级", max_length=20)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name = "班级"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.year + self.major + self.clazz
+
+
 class Student(models.Model):
     """学生模型类"""
     GENDER_CHOICES = (
         ('m', '男'),
         ('f', '女')
     )
-    GRADE_CHOICES = (
-        ('2016', '2016级'),
-        ('2017', '2017级'),
-        ('2018', '2018级'),
-        ('2019', '2019级')
-    )
     name = models.CharField("姓名", max_length=20, default="")
     gender = models.CharField("性别", max_length=1, choices=GENDER_CHOICES, default="")
-    year = models.CharField("年级", max_length=4, choices=GRADE_CHOICES, default="")
-    major = models.CharField("专业", max_length=20, default="")
-    clazz = models.CharField("班级", max_length=20, default="")
+    clazz = models.ForeignKey(Clazz, verbose_name="班级", on_delete=models.CASCADE)
 
     # 一对一关联字段
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="用户")
+    user = models.OneToOneField(User, verbose_name="用户", on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['id']

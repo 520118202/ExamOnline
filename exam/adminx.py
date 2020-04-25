@@ -24,7 +24,7 @@ class BaseSetting(object):
 
 
 class ExamAdmin(object):
-    list_display = ['id', 'name', 'exam_date', 'total_time', 'paper', 'major', 'tips', 'students']
+    list_display = ['id', 'name', 'exam_date', 'total_time', 'paper', 'major', 'tips', 'clazzs']
     list_filter = ['major', 'exam_date']
     search_fields = ['id', 'name']
     list_display_links = ['name']
@@ -33,9 +33,9 @@ class ExamAdmin(object):
     model_icon = 'fa fa-book'
     relfield_style = 'fk-ajax'
     # 多对多样式字段支持过滤
-    filter_horizontal = ('students',)
+    filter_horizontal = ('clazzs',)
     # 修改多对多穿梭框样式
-    style_fields = {'students': 'm2m_transfer'}
+    style_fields = {'clazzs': 'm2m_transfer'}
 
 
 class PaperAdmin(object):

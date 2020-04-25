@@ -6,8 +6,8 @@ from rest_framework import viewsets, mixins, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from user.models import Student
-from user.serializers import StudentSerializer, UserDetailSerializer
+from user.models import Student, Clazz
+from user.serializers import StudentSerializer, UserDetailSerializer, ClazzSerializer
 
 
 # Create your views here.
@@ -85,9 +85,19 @@ class UpdatePwdApi(APIView):
 
 class StudentViewSet(viewsets.ModelViewSet):
     """
-    修改学生信息
+    学生信息
     """
-    # 这里必须要定义一个默认的排序,否则会报错
+    # 查询集
     queryset = Student.objects.all().order_by('id')
     # 序列化
     serializer_class = StudentSerializer
+
+
+class ClazzListViewSet(viewsets.ModelViewSet):
+    """
+    班级信息
+    """
+    # 查询集
+    queryset = Clazz.objects.all().order_by('id')
+    # 序列化
+    serializer_class = ClazzSerializer
