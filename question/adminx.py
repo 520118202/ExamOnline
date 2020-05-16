@@ -1,6 +1,7 @@
 import xadmin
 
 from question.models import Choice, Fill, Judge, Program
+from question.resource import ChoiceResource, FillResource, JudgeResource, ProgramResource
 
 
 class ChoiceAdmin(object):
@@ -9,9 +10,10 @@ class ChoiceAdmin(object):
     list_filter = ['level']
     search_fields = ['id', 'question']
     list_display_links = ['question']
-    list_per_page = 5
+    list_per_page = 10
     # list_editable = ['question']
     model_icon = 'fa fa-question-circle-o'
+    import_export_args = {'import_resource_class': ChoiceResource}
 
 
 class FillAdmin(object):
@@ -22,6 +24,7 @@ class FillAdmin(object):
     list_per_page = 10
     # list_editable = ['question']
     model_icon = 'fa fa-edit '
+    import_export_args = {'import_resource_class': FillResource}
 
 
 class JudgeAdmin(object):
@@ -32,6 +35,7 @@ class JudgeAdmin(object):
     list_per_page = 10
     # list_editable = ['question']
     model_icon = 'fa fa-check-square-o'
+    import_export_args = {'import_resource_class': JudgeResource}
 
 
 class ProgramAdmin(object):
@@ -42,6 +46,7 @@ class ProgramAdmin(object):
     list_per_page = 10
     # list_editable = ['question']
     model_icon = 'fa fa-laptop'
+    import_export_args = {'import_resource_class': ProgramResource}
 
 
 xadmin.site.register(Choice, ChoiceAdmin)

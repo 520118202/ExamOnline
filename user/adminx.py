@@ -1,6 +1,9 @@
 import xadmin
 
 from user.models import Student, Teacher, Clazz
+from import_export import resources
+
+from user.resource import StudentResource
 
 
 class ClazzAdmin(object):
@@ -10,7 +13,7 @@ class ClazzAdmin(object):
     list_display_links = ['clazz']
     list_per_page = 10
     # list_editable = ['name']
-    model_icon = 'fa fa-file-text'
+    model_icon = 'fa fa-institution '
 
 
 class StudentAdmin(object):
@@ -21,6 +24,8 @@ class StudentAdmin(object):
     list_per_page = 10
     model_icon = 'fa fa-user-circle-o'
     relfield_style = 'fk-ajax'
+    # import_export_args = {'import_resource_class' : StudentResource, 'export_resource_class': StudentResource}
+    import_export_args = {'import_resource_class' : StudentResource}
 
 
 class TeacherAdmin(object):
@@ -35,3 +40,4 @@ class TeacherAdmin(object):
 xadmin.site.register(Student, StudentAdmin)
 xadmin.site.register(Teacher, TeacherAdmin)
 xadmin.site.register(Clazz, ClazzAdmin)
+
