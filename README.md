@@ -1,7 +1,9 @@
 # ExamOnline
 Python在线考试系统-大学毕业设计
-安装requirements.txt依赖
+后端安装依赖
 pip install -r requirements.txt
+前端安装依赖
+npm run install
 ![image](https://github.com/520118202/ExamOnline/blob/master/templates/img/1.png)
 ![image](https://github.com/520118202/ExamOnline/blob/master/templates/img/2.png)
 ![image](https://github.com/520118202/ExamOnline/blob/master/templates/img/3.png)
