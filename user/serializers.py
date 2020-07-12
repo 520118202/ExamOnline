@@ -19,7 +19,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
     # 覆盖外键字段 只读
     # user = UserDetailSerializer()
-    clazz = ClazzSerializer(read_only=True)
+    # clazz = ClazzSerializer(read_only=True)
 
     # 用于创建的只写字段
     clazz_id = serializers.PrimaryKeyRelatedField(queryset=Clazz.objects.all(), source='clazz', write_only=True)

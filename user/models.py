@@ -25,11 +25,11 @@ class Student(models.Model):
         ('f', '女')
     )
     name = models.CharField("姓名", max_length=20, default="")
-    gender = models.CharField("性别", max_length=1, choices=GENDER_CHOICES, default="")
-    clazz = models.ForeignKey(Clazz, verbose_name="班级", on_delete=models.CASCADE)
-
     # 一对一关联字段
     user = models.OneToOneField(User, verbose_name="用户", on_delete=models.CASCADE)
+    gender = models.CharField("性别", max_length=1, choices=GENDER_CHOICES, default="")
+    clazz = models.ForeignKey(Clazz, verbose_name="班级", on_delete=models.CASCADE, default="1")
+
 
     class Meta:
         ordering = ['id']

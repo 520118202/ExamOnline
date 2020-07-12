@@ -18,7 +18,7 @@ class CommonPagination(PageNumberPagination):
     # 页码参数
     page_query_param = 'page'
     # 最多能显示多少页
-    max_page_size = 100
+    max_page_size = 10
 
 
 class ExamListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):

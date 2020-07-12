@@ -1,14 +1,14 @@
 import subprocess
-from django.http import request
-from django.shortcuts import render
 
-# Create your views here.
 from rest_framework import mixins, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from question.models import Choice, Fill, Judge, Program
 from question.serializers import ChoiceSerializer, FillSerializer, JudgeSerializer, ProgramSerializer
+
+
+# Create your views here.
 
 
 class ChoiceListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
@@ -84,6 +84,7 @@ class ProgramListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 
 class CheckProgramApi(APIView):
+    """测试编程题"""
 
     def post(self, request):
         # 获取post提交的字典数据
